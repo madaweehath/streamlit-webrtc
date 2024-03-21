@@ -10,7 +10,7 @@ smile_cascade = cv2.CascadeClassifier('haarcascade_smile.xml')
 st.title("My first Streamlit app")
 st.write("Hello, world")
 
-def writeTitle:
+def writeTitle():
     st.write("Hello, world")
 
 
