@@ -10,6 +10,9 @@ smile_cascade = cv2.CascadeClassifier('haarcascade_smile.xml')
 st.title("My first Streamlit app")
 st.write("Hello, world")
 
+def writeTitle:
+    st.write("Hello, world")
+
 
 class VideoProcessor:
     def __init__(self) -> None:
@@ -17,7 +20,7 @@ class VideoProcessor:
         self.threshold2 = 200
 
     def recv(frame: av.VideoFrame) -> av.VideoFrame:
-        st.title("hi3")
+        writeTitle()
         img = frame.to_ndarray(format="bgr24")
         # Convert frame to grayscale for faster processing
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
