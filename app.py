@@ -54,7 +54,7 @@ st.write("Hello, world")
 def recv(frame: av.VideoFrame) -> av.VideoFrame:
         img = frame.to_ndarray(format="bgr24")
         # Convert frame to grayscale for faster processing
-        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
         # Detect faces in the grayscale frame
         faces = face_cascade.detectMultiScale(gray, 1.1, 4)
@@ -65,7 +65,7 @@ def recv(frame: av.VideoFrame) -> av.VideoFrame:
         for (x, y, w, h) in faces:
             # Extract the region of interest (ROI) for the face
             roi_gray = gray[y:y+h, x:x+w]
-            roi_color = frame[y:y+h, x:x+w]
+            roi_color = img[y:y+h, x:x+w]
 
             # Detect smiles within the face ROI
             smiles = smile_cascade.detectMultiScale(roi_gray, 1.8, 20)
@@ -78,7 +78,7 @@ def recv(frame: av.VideoFrame) -> av.VideoFrame:
                 cv2.putText(img, "Happy Birthday!", (x + int(w/2), y - 10), font, 0.7, (255, 255, 255), 2, cv2.LINE_AA)
 
         # Display the resulting frame
-        cv2.imshow('Smile Capture App', frame)
+        cv2.imshow('Smile Capture App', img)
         #+++++++++++++++++++++++++++++++++++++++++++
         # img = frame.to_ndarray(format="bgr24")
 
