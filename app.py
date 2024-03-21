@@ -23,6 +23,8 @@ class VideoProcessor:
 
         # Detect faces in the grayscale frame
         faces = face_cascade.detectMultiScale(gray, 1.1, 4)
+        if len(faces) > 0:
+            st.title("hi2")
 
         # Loop through detected faces
         for (x, y, w, h) in faces:
