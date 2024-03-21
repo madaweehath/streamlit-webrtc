@@ -35,6 +35,7 @@ class VideoProcessor:
 
             # Display "Happy Birthday" on smile detection
             if len(smiles) > 0:
+                st.title("hi")
                 # Put a text label "Happy Birthday!" on top
                 font = cv2.FONT_HERSHEY_SIMPLEX
                 cv2.putText(img, "Happy Birthday!", (x + int(w/2), y - 10), font, 0.7, (255, 255, 255), 2, cv2.LINE_AA)
