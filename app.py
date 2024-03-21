@@ -26,28 +26,28 @@ class VideoProcessor:
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
         # Detect faces in the grayscale frame
-        faces = face_cascade.detectMultiScale(gray, 1.1, 4)
+        faces = face_cascade.detectMultiScale(img, 1.1, 4)
         if len(faces) > 0:
             st.title("hi2")
 
-        # Loop through detected faces
-        for (x, y, w, h) in faces:
-            # Extract the region of interest (ROI) for the face
-            roi_gray = gray[y:y+h, x:x+w]
-            roi_color = img[y:y+h, x:x+w]
+        # # Loop through detected faces
+        # for (x, y, w, h) in faces:
+        #     # Extract the region of interest (ROI) for the face
+        #     roi_gray = gray[y:y+h, x:x+w]
+        #     roi_color = img[y:y+h, x:x+w]
 
-            # Detect smiles within the face ROI
-            smiles = smile_cascade.detectMultiScale(roi_gray, 1.8, 20)
+        #     # Detect smiles within the face ROI
+        #     smiles = smile_cascade.detectMultiScale(roi_gray, 1.8, 20)
 
-            # Display "Happy Birthday" on smile detection
-            if len(smiles) > 0:
-                st.title("hi")
-                # Put a text label "Happy Birthday!" on top
-                font = cv2.FONT_HERSHEY_SIMPLEX
-                cv2.putText(img, "Happy Birthday!", (x + int(w/2), y - 10), font, 0.7, (255, 255, 255), 2, cv2.LINE_AA)
+        #     # Display "Happy Birthday" on smile detection
+        #     if len(smiles) > 0:
+        #         st.title("hi")
+        #         # Put a text label "Happy Birthday!" on top
+        #         font = cv2.FONT_HERSHEY_SIMPLEX
+        #         cv2.putText(img, "Happy Birthday!", (x + int(w/2), y - 10), font, 0.7, (255, 255, 255), 2, cv2.LINE_AA)
 
-        # Display the resulting frame
-        cv2.imshow('Smile Capture App', img)
+        # # Display the resulting frame
+        # cv2.imshow('Smile Capture App', img)
         #+++++++++++++++++++++++++++++++++++++++++++
         # img = frame.to_ndarray(format="bgr24")
 
