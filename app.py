@@ -23,10 +23,14 @@ class VideoProcessor:
         writeTitle()
         img = frame.to_ndarray(format="bgr24")
         # Convert frame to grayscale for faster processing
-        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        # gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
         # Detect faces in the grayscale frame
         faces = face_cascade.detectMultiScale(img, 1.1, 4)
+        if face_cascade.empty():
+            print("Error: Unable to load face cascade classifier.")
+        if smile_cascade.empty():
+            print("Error: Unable to load smile cascade classifier.")
         if len(faces) > 0:
             st.title("hi2")
 
