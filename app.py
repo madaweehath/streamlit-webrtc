@@ -28,9 +28,9 @@ class VideoProcessor:
         # Detect faces in the grayscale frame
         faces = face_cascade.detectMultiScale(img, 1.1, 4)
         if face_cascade.empty():
-            print("Error: Unable to load face cascade classifier.")
+            st.title("face ???")
         if smile_cascade.empty():
-            print("Error: Unable to load smile cascade classifier.")
+            st.title("smile??")
         if len(faces) > 0:
             st.title("hi2")
 
