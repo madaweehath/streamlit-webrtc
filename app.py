@@ -20,6 +20,7 @@ class VideoProcessor:
         self.threshold2 = 200
 
     def recv(self, frame):
+        print("test")
         writeTitle()
         img = frame.to_ndarray(format="bgr24")
         # Convert frame to grayscale for faster processing
