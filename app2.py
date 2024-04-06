@@ -17,8 +17,6 @@ class VideoProcessor:
     def recv(self, frame):
         img = frame.to_ndarray(format="bgr24")
 
-        # Convert to grayscale for face detection
-        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
         # Detect faces
         faces = self.face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
@@ -26,8 +24,6 @@ class VideoProcessor:
         # Draw rectangles around detected faces
         for (x, y, w, h) in faces:
             cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)
-
-        img = cv2.cvtColor(cv2.Canny(img, self.threshold1, self.threshold2), cv2.COLOR_GRAY2BGR)
 
         return av.VideoFrame.from_ndarray(img, format="bgr24")
 
@@ -39,6 +35,3 @@ ctx = webrtc_streamer(
         "iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]
     }
 )
-if ctx.video_processor:
-    ctx.video_processor.threshold1 = st.slider("Threshold1", min_value=0, max_value=1000, step=1, value=100)
-    ctx.video_processor.threshold2 = st.slider("Threshold2", min_value=0, max_value=1000, step=1, value=200)
