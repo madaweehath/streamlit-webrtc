@@ -9,12 +9,12 @@ st.write("Hello, world")
 
 
 class VideoProcessor:
-    def faces
     def __init__(self) -> None:
         self.threshold1 = 100
         self.threshold2 = 200
         # Load pre-trained face detection cascade classifier
         self.face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
+        self.faces = ()
 
     def recv(self, frame):
         img = frame.to_ndarray(format="bgr24")
