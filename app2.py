@@ -40,8 +40,10 @@ class VideoProcessor:
 
             # Detect smiles within the region of interest
             if self.detect_smile(roi_gray):
-                self.smile_detected = True
-                break  # Exit the loop if a smile is detected
+                break
+                #self.smile_detected = True
+                #break  # Exit the loop if a smile is detected
+        st.image('Screenshot (137).png', caption='Sunrise by the mountains')
 
         # Check if a smile is detected
         #if smile_detected:
@@ -53,9 +55,6 @@ class VideoProcessor:
 
         return av.VideoFrame.from_ndarray(img, format="bgr24")
 
-# Create a flag to indicate if a smile is detected
-smile_detected = False
-
 ctx = webrtc_streamer(
     key="example",
     video_processor_factory=VideoProcessor,
@@ -63,7 +62,4 @@ ctx = webrtc_streamer(
         "iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]
     }
 )
-# Stop the streamer and display an image if a smile is detected
-if ctx.video_processor and ctx.video_processor.smile_detected:
-    ctx.stop()
-    st.image('Screenshot (137).png', caption='Sunrise by the mountains')
+
