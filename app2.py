@@ -24,7 +24,8 @@ class VideoProcessor:
         # Draw rectangles around detected faces
         for (x, y, w, h) in faces:
             cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)
-
+        if len(faces) > 0:
+            st.title("you can see me!!!")
         return av.VideoFrame.from_ndarray(img, format="bgr24")
 
 
