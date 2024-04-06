@@ -28,7 +28,7 @@ class VideoProcessor:
         return av.VideoFrame.from_ndarray(img, format="bgr24")
 
 #        if len(faces) > 0 :
-    st.image('Screenshot(137).png', caption='Sunrise by the mountains')
+    st.image('Screenshot (137).png', caption='Sunrise by the mountains')
  #       else:
   #           st.title("No Faces Detected")
 
