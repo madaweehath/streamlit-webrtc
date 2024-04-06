@@ -9,9 +9,11 @@ smile_cascade = cv2.CascadeClassifier('haarcascade_smile.xml')
 
 st.title("My first Streamlit app")
 st.write("Hello, world")
+st.write("do you see me?")
 
-def writeTitle():
-    st.write("Hello, world")
+
+#def writeTitle():
+#    st.write("Hello, world")
 
 
 class VideoProcessor:
@@ -111,7 +113,7 @@ ctx = webrtc_streamer(
 #     media_stream_constraints={"video": True, "audio": False},
 #     async_processing=True,
 # )
-# if ctx.video_processor:
-#     ctx.video_processor.threshold1 = st.slider("Threshold1", min_value=0, max_value=1000, step=1, value=100)
-#     ctx.video_processor.threshold2 = st.slider("Threshold2", min_value=0, max_value=1000, step=1, value=200)
+ if ctx.video_processor:
+     ctx.video_processor.threshold1 = st.slider("Threshold1", min_value=0, max_value=1000, step=1, value=100)
+     ctx.video_processor.threshold2 = st.slider("Threshold2", min_value=0, max_value=1000, step=1, value=200)
 ##############________________________________________________________________________________________________________________
