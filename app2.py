@@ -44,16 +44,17 @@ class VideoProcessor:
                 break  # Exit the loop if a smile is detected
 
         # Check if a smile is detected
-        if self.smile_detected:
+        #if smile_detected:
             # Close the camera
-            st.stop()
+            #st.stop()
             # Display an image
-            st.image('Screenshot (137).png', caption='Sunrise by the mountains')
-            return
+            #st.image('Screenshot (137).png', caption='Sunrise by the mountains')
+            #return
 
         return av.VideoFrame.from_ndarray(img, format="bgr24")
 
-
+# Create a flag to indicate if a smile is detected
+smile_detected = False
 
 ctx = webrtc_streamer(
     key="example",
@@ -62,3 +63,7 @@ ctx = webrtc_streamer(
         "iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]
     }
 )
+# Stop the streamer and display an image if a smile is detected
+if ctx.video_processor and ctx.video_processor.smile_detected:
+    ctx.stop()
+    st.image('Screenshot (137).png', caption='Sunrise by the mountains')
