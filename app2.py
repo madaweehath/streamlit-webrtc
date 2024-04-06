@@ -44,12 +44,12 @@ class VideoProcessor:
                 break  # Exit the loop if a smile is detected
 
         # Check if a smile is detected
-#        if self.smile_detected:
-#            # Close the camera
-#            st.stop()
-#            # Display an image
-#            st.image('Screenshot (137).png', caption='Sunrise by the mountains')
-#            return
+        if self.smile_detected:
+            # Close the camera
+            st.stop()
+            # Display an image
+            st.image('Screenshot (137).png', caption='Sunrise by the mountains')
+            return
 
         return av.VideoFrame.from_ndarray(img, format="bgr24")
 
