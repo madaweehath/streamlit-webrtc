@@ -28,10 +28,10 @@ class VideoProcessor:
         return av.VideoFrame.from_ndarray(img, format="bgr24")
         
     def update_title(faces):
-        if faces :
-            st.image('Screenshot(137).png', caption='Sunrise by the mountains')
+        if len(faces) > 0 :
+            return st.image('Screenshot(137).png', caption='Sunrise by the mountains')
         else:
-            st.title("No Faces Detected")
+            return st.title("No Faces Detected")
 
 
 ctx = webrtc_streamer(
