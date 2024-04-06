@@ -19,7 +19,7 @@ class VideoProcessor:
 
 
         # Detect faces
-        faces = self.face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
+        faces = self.face_cascade.detectMultiScale(img, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
 
         # Draw rectangles around detected faces
         for (x, y, w, h) in faces:
