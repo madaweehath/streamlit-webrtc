@@ -23,17 +23,27 @@ class VideoProcessor:
 
         # Detect faces
         faces = self.face_cascade.detectMultiScale(img, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
-        smiles = smile_cascade.detectMultiScale(img, 1.8, 20)
 
         # Draw rectangles around detected faces
-        for (x, y, w, h) in smiles:
+        for (x, y, w, h) in faces:
             cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)
+
+            # Region of interest for smile detection within the face
+            roi_gray = img[y:y+h, x:x+w]
+            roi_color = img[y:y+h, x:x+w]
+
+            # Detect smiles within the region of interest
+            smiles = self.smile_cascade.detectMultiScale(roi_gray, scaleFactor=1.8, minNeighbors=20)
+
+            # Draw rectangles around detected smiles
+            for (sx, sy, sw, sh) in smiles:
+                cv2.rectangle(roi_color, (sx, sy), (sx+sw, sy+sh), (0, 255, 0), 2)
+
         return av.VideoFrame.from_ndarray(img, format="bgr24")
 
-#        if len(faces) > 0 :
+
     st.image('Screenshot (137).png', caption='Sunrise by the mountains')
- #       else:
-  #           st.title("No Faces Detected")
+
 
 
 ctx = webrtc_streamer(
