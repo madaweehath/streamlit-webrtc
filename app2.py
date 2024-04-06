@@ -15,8 +15,15 @@ class VideoProcessor:
         # Load pre-trained face detection cascade classifier
         self.face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
         self.smile_cascade = cv2.CascadeClassifier( cv2.data.haarcascades + 'haarcascade_smile.xml')
+        self.smile_detected = False
         self.faces = ()
         self.smiles = ()
+
+
+    def detect_smile(self, img):
+        # Detect smiles within the image
+        smiles = self.smile_cascade.detectMultiScale(img, scaleFactor=1.8, minNeighbors=20)
+        return len(smiles) > 0
 
     def recv(self, frame):
         img = frame.to_ndarray(format="bgr24")
@@ -30,19 +37,21 @@ class VideoProcessor:
 
             # Region of interest for smile detection within the face
             roi_gray = img[y:y+h, x:x+w]
-            roi_color = img[y:y+h, x:x+w]
 
             # Detect smiles within the region of interest
-            smiles = self.smile_cascade.detectMultiScale(roi_gray, scaleFactor=1.8, minNeighbors=20)
+            if self.detect_smile(roi_gray):
+                self.smile_detected = True
+                break  # Exit the loop if a smile is detected
 
-            # Draw rectangles around detected smiles
-            for (sx, sy, sw, sh) in smiles:
-                cv2.rectangle(roi_color, (sx, sy), (sx+sw, sy+sh), (0, 255, 0), 2)
+        # Check if a smile is detected
+        if self.smile_detected:
+            # Close the camera
+            webrtc_streamer.stop()
+            # Display an image
+            st.image('Screenshot (137).png', caption='Sunrise by the mountains')
+            return
 
         return av.VideoFrame.from_ndarray(img, format="bgr24")
-
-
-    st.image('Screenshot (137).png', caption='Sunrise by the mountains')
 
 
 
