@@ -42,13 +42,11 @@ class VideoProcessor:
             if self.detect_smile(roi_gray):
                 self.smile_detected = True
                 break  # Exit the loop if a smile is detected
-        webrtc_streamer.stop()
-        st.image('Screenshot (137).png', caption='Sunrise by the mountains')
 
         # Check if a smile is detected
 #        if self.smile_detected:
 #            # Close the camera
-#            webrtc_streamer.stop()
+#            st.stop()
 #            # Display an image
 #            st.image('Screenshot (137).png', caption='Sunrise by the mountains')
 #            return
