@@ -9,31 +9,27 @@ st.write("Hello, world")
 
 
 class VideoProcessor:
+    faces
     def __init__(self) -> None:
         self.threshold1 = 100
         self.threshold2 = 200
         # Load pre-trained face detection cascade classifier
         self.face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 
-    def detect_faces(self, img):
-        # Detect faces
-        faces = self.face_cascade.detectMultiScale(img, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
-        return faces
-        
     def recv(self, frame):
         img = frame.to_ndarray(format="bgr24")
 
         # Detect faces
-        faces = detect_faces(img)
+        faces = self.face_cascade.detectMultiScale(img, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
 
         # Draw rectangles around detected faces
         for (x, y, w, h) in faces:
             cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)
         return av.VideoFrame.from_ndarray(img, format="bgr24")
         
-    def update_title(faces_detected):
-        if faces_detected:
-            st.title("Faces Detected!")
+    def update_title(faces):
+        if faces :
+            st.image('Screenshot(137).png', caption='Sunrise by the mountains')
         else:
             st.title("No Faces Detected")
 
