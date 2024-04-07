@@ -30,7 +30,7 @@ class VideoProcessor:
         for (sx, sy, sw, sh) in smiles:
             cv2.rectangle(roi_color, (sx, sy), (sx+sw, sy+sh), (0, 255, 0), 2)
                 
-        return av.VideoFrame.from_ndarray(img, format="bgr24")
+        return av.VideoFrame.from_ndarray(roi_gray, format="bgr24")
 
 ctx = webrtc_streamer(
     key="example",
