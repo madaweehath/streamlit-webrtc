@@ -25,6 +25,8 @@ class VideoProcessor:
         st.write("def detect_smile")
         # Detect smiles within the image
         smiles = self.smile_cascade.detectMultiScale(img, scaleFactor=1.8, minNeighbors=20)
+        for (sx, sy, sw, sh) in smiles:
+                cv2.rectangle(roi_color, (sx, sy), (sx+sw, sy+sh), (0, 255, 0), 2)
         return len(smiles) > 0
 
     def recv(self, frame):
