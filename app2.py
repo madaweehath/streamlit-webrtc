@@ -3,9 +3,8 @@ from streamlit_webrtc import webrtc_streamer
 import av
 import cv2
 
-st.title("My first Streamlit app")
+st.title("يارب يشتغل")
 st.write("Hello, world")
-st.write("hihihihihi")
 
 
 
@@ -25,11 +24,12 @@ class VideoProcessor:
         faces = self.face_cascade.detectMultiScale(img, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
         
         for (x, y, w, h) in faces:
+            cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)
             # Region of interest for smile detection within the face
             roi_gray = img[y:y+h, x:x+w]
             smiles = self.smile_cascade.detectMultiScale(roi_gray, scaleFactor=1.8, minNeighbors=20)
             for (sx, sy, sw, sh) in smiles:
-                cv2.rectangle(img, (x+sx, y+sy), (x+sx+sw, y+sy+sh), (0, 255, 0), 2)
+                cv2.rectangle(roi_gray, (x+sx, y+sy), (x+sx+sw, y+sy+sh), (0, 255, 0), 2)
         
         return av.VideoFrame.from_ndarray(img, format="bgr24")
 
