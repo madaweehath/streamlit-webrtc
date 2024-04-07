@@ -20,14 +20,6 @@ class VideoProcessor:
         self.smile_detected = False
         #self.faces = ()
         #self.smiles = ()
-    
-    def detect_smile(self, img):
-        st.write("def detect_smile")
-        # Detect smiles within the image
-        smiles = self.smile_cascade.detectMultiScale(img, scaleFactor=1.8, minNeighbors=20)
-        for (sx, sy, sw, sh) in smiles:
-                cv2.rectangle(roi_color, (sx, sy), (sx+sw, sy+sh), (0, 255, 0), 2)
-        return len(smiles) > 0
 
     def recv(self, frame):
         st.write("def recv")
@@ -43,17 +35,13 @@ class VideoProcessor:
             # Detect smiles within the region of interest
             # Region of interest for smile detection within the face
             roi_gray = img[y:y+h, x:x+w]
-
-            # Detect smiles within the region of interest
-            if self.detect_smile(roi_gray):
-                self.smile_detected = True
-                break  # Exit the loop if a smile is detected
-                
-            #if len(smiles) > 0:
-                #webrtc_streamer.stop()
-                #break
-                #self.smile_detected = True
-                #break  # Exit the loop if a smile is detected
+            smiles = self.smile_cascade.detectMultiScale(roi_gray, scaleFactor=1.8, minNeighbors=20)
+            for (sx, sy, sw, sh) in smiles:
+                cv2.rectangle(roi_color, (sx, sy), (sx+sw, sy+sh), (0, 255, 0), 2)
+                if len(smiles) > 0:
+                    self.smile_detected = True
+                    break  # Exit the loop if a smile is detected
+            break
         
                 # Check if a smile is detected
         if self.smile_detected:
