@@ -32,19 +32,19 @@ class VideoProcessor:
         for (x, y, w, h) in faces:
             cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)
 
-            # Detect smiles within the region of interest
             # Region of interest for smile detection within the face
             roi_gray = img[y:y+h, x:x+w]
             smiles = self.smile_cascade.detectMultiScale(roi_gray, scaleFactor=1.8, minNeighbors=20)
             for (sx, sy, sw, sh) in smiles:
                 cv2.rectangle(roi_color, (sx, sy), (sx+sw, sy+sh), (0, 255, 0), 2)
-                if len(smiles) > 0:
-                    self.smile_detected = True
-                    break  # Exit the loop if a smile is detected
-            break
+#                if len(smiles) > 0:
+#                    self.smile_detected = True
+#                    break  # Exit the loop if a smile is detected
+#            break
         
                 # Check if a smile is detected
         if self.smile_detected:
+        if len(smiles) > 0:
             # Display an image
             st.image('Screenshot (137).png', caption='Sunrise by the mountains')    
             st.subheader('msg after detect smile')
