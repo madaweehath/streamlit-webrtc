@@ -43,7 +43,7 @@ class VideoProcessor:
 #            break
         
                 # Check if a smile is detected
-        if self.smile_detected:
+        #if self.smile_detected:
         if len(smiles) > 0:
             # Display an image
             st.image('Screenshot (137).png', caption='Sunrise by the mountains')    
