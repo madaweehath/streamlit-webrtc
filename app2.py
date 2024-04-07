@@ -37,7 +37,7 @@ class VideoProcessor:
             smiles = self.smile_cascade.detectMultiScale(roi_gray, scaleFactor=1.8, minNeighbors=20)
             if len(smiles) > 0:
                 webrtc_streamer.stop()
-                break
+                #break
                 #self.smile_detected = True
                 #break  # Exit the loop if a smile is detected
         st.image('Screenshot (137).png', caption='Sunrise by the mountains')
