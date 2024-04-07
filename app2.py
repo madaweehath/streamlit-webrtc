@@ -53,7 +53,7 @@ class VideoProcessor:
         if self.smile_detected:
             # Display an image
             st.image('Screenshot (137).png', caption='Sunrise by the mountains')    
-            st.subheader(“msg after detect smile” )
+            st.subheader('msg after detect smile')
             # Close the camera
             #webrtc_streamer.stop()
 
