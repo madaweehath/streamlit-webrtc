@@ -20,11 +20,13 @@ class VideoProcessor:
         #self.smiles = ()
     
     def detect_smile(self, img):
+        st.write("def detect_smile")
         # Detect smiles within the image
         smiles = self.smile_cascade.detectMultiScale(img, scaleFactor=1.8, minNeighbors=20)
         return len(smiles) > 0
 
     def recv(self, frame):
+        st.write("def recv")
         img = frame.to_ndarray(format="bgr24")
 
         # Detect faces
