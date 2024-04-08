@@ -5,6 +5,7 @@ import cv2
 
 st.title("يارب يشتغل")
 st.write("Hello, world")
+print("print statement")
 
 
 
