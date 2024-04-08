@@ -15,6 +15,7 @@ class VideoProcessor:
         # Load pre-trained face detection cascade classifier
         self.face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
         self.smile_cascade = cv2.CascadeClassifier( cv2.data.haarcascades + 'haarcascade_smile.xml')
+        self.faces = ()
         
 
 
@@ -22,9 +23,9 @@ class VideoProcessor:
         img = frame.to_ndarray(format="bgr24")
 
         # Detect faces
-        faces = self.face_cascade.detectMultiScale(img, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
+        self.faces = self.face_cascade.detectMultiScale(img, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
         
-        for (x, y, w, h) in faces:
+        for (x, y, w, h) in self.faces:
             cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)
 
             # Region of interest for smile detection within the face
@@ -42,6 +43,6 @@ ctx = webrtc_streamer(
         "iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]
     }
 )
-    if len(faces) > 0:
-        ctx.stop()
-        st.write("yay")       
+if len(VideoProcessor.faces) > 0:
+    ctx.stop()
+    st.write("yay")       
