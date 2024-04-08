@@ -7,7 +7,7 @@ st.title("يارب يشتغل")
 st.write("Hello, world")
 
 
-flag = True 
+flag = False 
 class VideoProcessor:
     def __init__(self) -> None:
         self.threshold1 = 100
@@ -27,11 +27,11 @@ class VideoProcessor:
         
         for (x, y, w, h) in faces:
             cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)
-            st.write("im in faces loop") 
+            if len(faces) > 0:
+               flag= True
             
         return av.VideoFrame.from_ndarray(img, format="bgr24")
-        #if len(faces) > 0:
-         #   flag= True
+
           #  st.write("yay") 
            # return None
 
