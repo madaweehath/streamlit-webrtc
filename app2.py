@@ -7,7 +7,7 @@ st.title("يارب يشتغل")
 st.write("Hello, world")
 
 
-
+flag = False 
 class VideoProcessor:
     def __init__(self) -> None:
         self.threshold1 = 100
@@ -29,7 +29,8 @@ class VideoProcessor:
             cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)
         if len(self.faces) > 0:
             webrtc_streamer.stop()
-            st.write("yay")    
+            flag= True
+            st.write("yay") 
 
             # Region of interest for smile detection within the face
             #roi_gray = img[y:y+h, x:x+w]
@@ -48,7 +49,7 @@ ctx = webrtc_streamer(
 )
 
 class afterSmile:
-    if webrtc_streamer.stop():
+    if flag:
        st.image('Screenshot (137).png')
 
 
