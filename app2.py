@@ -36,13 +36,18 @@ class VideoProcessor:
 
         return av.VideoFrame.from_ndarray(img, format="bgr24")
 
+# Create an instance of VideoProcessor
+video_processor = VideoProcessor()
+
+# Create WebRTC stream
 ctx = webrtc_streamer(
     key="example",
-    video_processor_factory=VideoProcessor,
+    video_processor_factory=video_processor,  # Use the instance, not the class
     rtc_configuration={
         "iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]
     }
 )
-if len(VideoProcessor.faces) > 0:
+
+if len(video_processor.faces) > 0:
     ctx.stop()
-    st.write("yay")       
+    st.write("yay")    
