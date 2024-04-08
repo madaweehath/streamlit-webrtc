@@ -17,7 +17,7 @@ class VideoProcessor:
         self.face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
         self.smile_cascade = cv2.CascadeClassifier( cv2.data.haarcascades + 'haarcascade_smile.xml')
         self.faces= ()
-    st.write("faces len:" , len(self.faces))
+    st.write("faces len:" , len(faces))
 
 
     def recv(self, frame):
