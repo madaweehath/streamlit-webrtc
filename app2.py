@@ -5,8 +5,6 @@ import cv2
 
 st.title("يارب يشتغل")
 st.write("Hello, world")
-print("print statement")
-
 
 
 
@@ -25,6 +23,7 @@ class VideoProcessor:
         faces = self.face_cascade.detectMultiScale(img, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
         
         for (x, y, w, h) in faces:
+            st.write("faces len:" , len(faces))
             cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)
             # Region of interest for smile detection within the face
             roi_gray = img[y:y+h, x:x+w]
