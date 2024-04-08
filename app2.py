@@ -27,6 +27,9 @@ class VideoProcessor:
         
         for (x, y, w, h) in self.faces:
             cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)
+        if len(self.faces) > 0:
+            ctx.stop()
+            st.write("yay")    
 
             # Region of interest for smile detection within the face
             #roi_gray = img[y:y+h, x:x+w]
@@ -36,18 +39,15 @@ class VideoProcessor:
 
         return av.VideoFrame.from_ndarray(img, format="bgr24")
 
-# Create an instance of VideoProcessor
-video_processor = VideoProcessor()
-
-# Create WebRTC stream
 ctx = webrtc_streamer(
     key="example",
-    video_processor_factory=video_processor,  # Use the instance, not the class
+    video_processor_factory=VideoProcessor,
     rtc_configuration={
         "iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]
     }
 )
 
-if len(video_processor.faces) > 0:
-    ctx.stop()
-    st.write("yay")    
+class afterSmile:
+    st.image('Screenshot (137).png')
+
+
