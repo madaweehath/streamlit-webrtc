@@ -25,7 +25,7 @@ class VideoProcessor:
         
         for (x, y, w, h) in faces:
             cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)
-            if len(face) > 0:
+            if len(faces) > 0:
                 ctx.stop()
                 break
             # Region of interest for smile detection within the face
