@@ -28,6 +28,8 @@ class VideoProcessor:
         for (x, y, w, h) in faces:
             cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)
             flag= True
+        if flag:
+            st.image('Screenshot (137).png')
             
         return av.VideoFrame.from_ndarray(img, format="bgr24")
 
@@ -51,8 +53,7 @@ ctx = webrtc_streamer(
     }
 )
 
-if flag:
-    st.image('Screenshot (137).png')
+
     
 
 
