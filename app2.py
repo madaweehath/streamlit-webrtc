@@ -27,6 +27,7 @@ class VideoProcessor:
         self.faces = self.face_cascade.detectMultiScale(img, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
         
         for (x, y, w, h) in self.faces:
+            st.write("im in faces loop") 
             cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)
         if len(self.faces) > 0:
             flag= True
