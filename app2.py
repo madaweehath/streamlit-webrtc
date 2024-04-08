@@ -17,7 +17,7 @@ class VideoProcessor:
         self.face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
         self.smile_cascade = cv2.CascadeClassifier( cv2.data.haarcascades + 'haarcascade_smile.xml')
         self.faces= ()
-        st.write("faces len:" , len(self.faces))
+
 
 
     def recv(self, frame):
@@ -25,7 +25,7 @@ class VideoProcessor:
 
         # Detect faces
         faces = self.face_cascade.detectMultiScale(img, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
-        
+        st.write("faces len:" , len(faces))
         for (x, y, w, h) in faces:
             cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)
             # Region of interest for smile detection within the face
