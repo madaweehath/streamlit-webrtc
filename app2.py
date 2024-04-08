@@ -28,7 +28,7 @@ class VideoProcessor:
         for (x, y, w, h) in self.faces:
             cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)
         if len(self.faces) > 0:
-            ctx.stop()
+            webrtc_streamer.stop()
             st.write("yay")    
 
             # Region of interest for smile detection within the face
@@ -48,6 +48,7 @@ ctx = webrtc_streamer(
 )
 
 class afterSmile:
-    st.image('Screenshot (137).png')
+    if webrtc_streamer.stop()
+       st.image('Screenshot (137).png')
 
 
