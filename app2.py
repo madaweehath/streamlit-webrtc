@@ -42,9 +42,7 @@ class VideoProcessor:
 
         return av.VideoFrame.from_ndarray(img, format="bgr24")
         
-if flag:
-    st.image('Screenshot (137).png')
-    
+
 ctx = webrtc_streamer(
     key="example",
     video_processor_factory=VideoProcessor,
@@ -53,6 +51,9 @@ ctx = webrtc_streamer(
     }
 )
 
+if flag:
+    st.image('Screenshot (137).png')
+    
 
 
 
