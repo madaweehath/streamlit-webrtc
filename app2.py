@@ -16,6 +16,13 @@ class VideoProcessor:
         # Load pre-trained face detection cascade classifier
         self.face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
         self.smile_cascade = cv2.CascadeClassifier( cv2.data.haarcascades + 'haarcascade_smile.xml')
+        self.ctx = webrtc_streamer(
+            key="example",
+            video_processor_factory=self,
+            rtc_configuration={
+                "iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]
+            }
+        )
 
     def recv(self, frame):
         img = frame.to_ndarray(format="bgr24")
