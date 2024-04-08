@@ -15,7 +15,6 @@ class VideoProcessor:
         # Load pre-trained face detection cascade classifier
         self.face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
         self.smile_cascade = cv2.CascadeClassifier( cv2.data.haarcascades + 'haarcascade_smile.xml')
-        self.faces = []
         
 
 
@@ -24,12 +23,12 @@ class VideoProcessor:
         img = frame.to_ndarray(format="bgr24")
 
         # Detect faces
-        self.faces = self.face_cascade.detectMultiScale(img, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
+        faces = self.face_cascade.detectMultiScale(img, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
         
-        for (x, y, w, h) in self.faces:
+        for (x, y, w, h) in faces:
             st.write("im in faces loop") 
             cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)
-        if len(self.faces) > 0:
+        if len(faces) > 0:
             flag= True
             st.write("yay") 
             return None
