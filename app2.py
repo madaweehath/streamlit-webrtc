@@ -9,7 +9,7 @@ st.write("Hello, world")
 
 
 
-class VideoProcessor:
+
     def __init__(self) -> None:
         self.threshold1 = 100
         self.threshold2 = 200
