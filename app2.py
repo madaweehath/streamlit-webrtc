@@ -1,4 +1,4 @@
-import streamlit as st
+lfimport streamlit as st
 from streamlit_webrtc import webrtc_streamer
 import av
 import cv2
@@ -43,7 +43,7 @@ class VideoProcessor:
         
         return av.VideoFrame.from_ndarray(img, format="bgr24")
 
-ctx = webrtc_streamer(
+self.ctx = webrtc_streamer(
     key="example",
     video_processor_factory=VideoProcessor,
     rtc_configuration={
