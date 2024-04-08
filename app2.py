@@ -20,6 +20,7 @@ class VideoProcessor:
 
 
     def recv(self, frame):
+        global flag
         img = frame.to_ndarray(format="bgr24")
 
         # Detect faces
@@ -28,9 +29,9 @@ class VideoProcessor:
         for (x, y, w, h) in self.faces:
             cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)
         if len(self.faces) > 0:
-            webrtc_streamer.stop()
             flag= True
             st.write("yay") 
+            return None
 
             # Region of interest for smile detection within the face
             #roi_gray = img[y:y+h, x:x+w]
@@ -39,7 +40,10 @@ class VideoProcessor:
              #   cv2.rectangle(roi_gray, (x+sx, y+sy), (x+sx+sw, y+sy+sh), (0, 255, 0), 2)
 
         return av.VideoFrame.from_ndarray(img, format="bgr24")
-
+        
+if flag:
+    st.image('Screenshot (137).png')
+    
 ctx = webrtc_streamer(
     key="example",
     video_processor_factory=VideoProcessor,
@@ -48,8 +52,7 @@ ctx = webrtc_streamer(
     }
 )
 
-class afterSmile:
-    if flag:
-       st.image('Screenshot (137).png')
+
+
 
 
