@@ -5,7 +5,6 @@ import cv2
 
 st.title("يارب يشتغل")
 st.write("Hello, world")
-st.write("faces len:" , len(faces))
 
 
 
@@ -17,6 +16,9 @@ class VideoProcessor:
         # Load pre-trained face detection cascade classifier
         self.face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
         self.smile_cascade = cv2.CascadeClassifier( cv2.data.haarcascades + 'haarcascade_smile.xml')
+        self.faces= ()
+        st.write("faces len:" , len(faces))
+
 
     def recv(self, frame):
         img = frame.to_ndarray(format="bgr24")
