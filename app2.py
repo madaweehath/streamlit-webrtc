@@ -48,7 +48,7 @@ ctx = webrtc_streamer(
 )
 
 class afterSmile:
-    if webrtc_streamer.stop()
+    if webrtc_streamer.stop():
        st.image('Screenshot (137).png')
 
 
