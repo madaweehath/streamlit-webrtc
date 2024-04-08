@@ -8,7 +8,6 @@ st.write("Hello, world")
 
 
 
-
 class VideoProcessor:
     def __init__(self) -> None:
         self.threshold1 = 100
@@ -17,13 +16,7 @@ class VideoProcessor:
         self.face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
         self.smile_cascade = cv2.CascadeClassifier( cv2.data.haarcascades + 'haarcascade_smile.xml')
         
-ctx = webrtc_streamer(
-    key="example",
-    video_processor_factory=VideoProcessor,
-    rtc_configuration={
-        "iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]
-    }
-)
+
 
     def recv(self, frame):
         img = frame.to_ndarray(format="bgr24")
@@ -41,6 +34,13 @@ ctx = webrtc_streamer(
             #smiles = self.smile_cascade.detectMultiScale(roi_gray, scaleFactor=1.8, minNeighbors=20)
             #for (sx, sy, sw, sh) in smiles:
              #   cv2.rectangle(roi_gray, (x+sx, y+sy), (x+sx+sw, y+sy+sh), (0, 255, 0), 2)
-        
+        st.write("yay")
         return av.VideoFrame.from_ndarray(img, format="bgr24")
 
+ctx = webrtc_streamer(
+    key="example",
+    video_processor_factory=VideoProcessor,
+    rtc_configuration={
+        "iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]
+    }
+)
