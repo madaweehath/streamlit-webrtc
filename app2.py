@@ -33,13 +33,8 @@ class VideoProcessor:
             smiles = self.smile_cascade.detectMultiScale(roi_gray, scaleFactor=1.8, minNeighbors=20)
             for (sx, sy, sw, sh) in smiles:
                 cv2.rectangle(roi_gray, (x+sx, y+sy), (x+sx+sw, y+sy+sh), (0, 255, 0), 2)
-        #if flag:
-         #   st.image('Screenshot (137).png')
             
         return av.VideoFrame.from_ndarray(img, format="bgr24")
-
-
-
 
         
 
