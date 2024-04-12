@@ -30,7 +30,8 @@ class VideoProcessor:
             flag= True            
             # Region of interest for smile detection within the face
             roi_gray = img[y:y+h, x:x+w]
-            smiles = self.smile_cascade.detectMultiScale(roi_gray, scaleFactor=1.8, minNeighbors=20)
+            smiles = self.smile_cascade.detectMultiScale(roi_gray, scaleFactor=1.1, minNeighbors=30, minSize=(20, 20))
+
             for (sx, sy, sw, sh) in smiles:
                 cv2.rectangle(roi_gray, (x+sx, y+sy), (x+sx+sw, y+sy+sh), (0, 255, 0), 2)
             
