@@ -7,7 +7,7 @@ st.title("يارب يشتغل")
 st.write("Hello, world")
 
 
-flag = False 
+#flag = False 
 class VideoProcessor:
     def __init__(self) -> None:
         self.threshold1 = 100
@@ -19,7 +19,7 @@ class VideoProcessor:
 
 
     def recv(self, frame):
-        global flag
+        #global flag
         img = frame.to_ndarray(format="bgr24")
 
         # Detect faces
