@@ -38,9 +38,6 @@ class VideoProcessor:
             
         return av.VideoFrame.from_ndarray(img, format="bgr24")
 
-            st.write("yay") 
-            return None
-
 
 
 
