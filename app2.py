@@ -48,7 +48,7 @@ class VideoProcessor:
             smiles = self.smile_cascade.detectMultiScale(roi_gray, scaleFactor=1.8, minNeighbors=30, minSize=(20, 20))
 
             for (sx, sy, sw, sh) in smiles:
-                cv2.rectangle(roi_gray, (x+sx, y+sy), (x+sx+sw, y+sy+sh), (0, 255, 0), 2)
+                #cv2.rectangle(roi_gray, (x+sx, y+sy), (x+sx+sw, y+sy+sh), (0, 255, 0), 2)
                 cv2.putText(img, 'Eid Mubarak ' + title , (x, y), font,  fontScale, color, thickness, cv2.LINE_AA)                
                 #cv2.rectangle(roi_gray, (sx, sy), (sx+sw, sy+sh), (0, 255, 0), 2)
                 #cv2.rectangle(roi_gray, (x+sx, y+sy), (sx+sw, sy+sh), (0, 255, 0), 2)
