@@ -40,7 +40,7 @@ class VideoProcessor:
         thickness = 2
            
         for (x, y, w, h) in faces:
-            #cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)
+            #cv2.rectangle(img, (0, 0), (x+w, y+h), (255, 0, 0), 2)
             cv2.putText(img, 'hi ' + title , (x, y), font,  fontScale, color, thickness, cv2.LINE_AA)
             flag= True            
             # Region of interest for smile detection within the face
@@ -49,7 +49,7 @@ class VideoProcessor:
 
             for (sx, sy, sw, sh) in smiles:
                 #cv2.rectangle(roi_gray, (sx, sy), (sx+sw, sy+sh), (0, 255, 0), 2)
-                cv2.putText(img, 'Eid Mubark' + title , (x+w, y+h), font,  fontScale, color, thickness, cv2.LINE_AA)
+                cv2.putText(img, 'Eid Mubark' + title , (x, y), font,  fontScale, color, thickness, cv2.LINE_AA)
 
             
         return av.VideoFrame.from_ndarray(img, format="bgr24")
