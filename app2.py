@@ -42,7 +42,7 @@ class VideoProcessor:
         for (x, y, w, h) in faces:
             #cv2.rectangle(img, (10, 10), (x+w, y+h), (255, 0, 0), 2)
             cv2.putText(img, 'hi ' + title , (20, 40), font,  fontScale, color, thickness, cv2.LINE_AA)
-            flag= True            
+            
             # Region of interest for smile detection within the face
             roi_gray = img[y:y+h, x:x+w]
             smiles = self.smile_cascade.detectMultiScale(roi_gray, scaleFactor=1.8, minNeighbors=30, minSize=(20, 20))
