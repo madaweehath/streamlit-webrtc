@@ -6,7 +6,7 @@ import cv2
 st.title("يارب يشتغل")
 st.write("Hello, world")
 
-global title = st.text_input('وش اسمك🤔؟')
+title = st.text_input('وش اسمك🤔؟')
 
 
 #flag = False 
