@@ -1,5 +1,5 @@
 import streamlit as st
-from streamlit_webrtc import webrtc_streamer
+from streamlit_webrtc import webrtc_streamer , VideoHTMLAttributes
 import av
 import cv2
 
@@ -61,7 +61,8 @@ ctx = webrtc_streamer(
     video_processor_factory=VideoProcessor,
     rtc_configuration={
         "iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]
-    }
+    } , video_html_attrs=VideoHTMLAttributes(
+        autoPlay=True, controls=True, style={"width": "100%"}, muted=True )
 )
 
 
