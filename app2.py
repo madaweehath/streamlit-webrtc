@@ -25,7 +25,7 @@ class VideoProcessor:
         img = frame.to_ndarray(format="bgr24")
 
         # Detect faces
-        faces = self.face_cascade.detectMultiScale(img, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
+        faces = self.face_cascade.detectMultiScale(img, scaleFactor=1.8, minNeighbors=5, minSize=(30, 30))
         font = cv2.FONT_HERSHEY_SIMPLEX 
         # org 
         org = (50, 50) 
