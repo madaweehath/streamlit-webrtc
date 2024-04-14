@@ -7,7 +7,8 @@ st.title("معايدة نادي إنجاز")
 st.write("AI team")
 
 title = st.text_input('(بالانجليزي لوسمحت🙏)وش اسمك🤔؟')
-st.write('Perfect! now click on "Start"')
+if len(title) > 0:
+    st.write('Perfect! now click on "Start"')
 
 
 #flag = False 
