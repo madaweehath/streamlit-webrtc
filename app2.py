@@ -51,7 +51,7 @@ class VideoProcessor:
 
             for (sx, sy, sw, sh) in smiles:
                 #cv2.rectangle(roi_gray, (x+sx, y+sy), (x+sx+sw, y+sy+sh), (0, 255, 0), 2)
-                cv2.putText(img, 'Eid Mubarak ' + title , (x, y), font,  fontScale, color, thickness, cv2.LINE_AA)                
+                cv2.putText(img, 'Eid Mubarak ' + title , (x, y), font,  fontScale, (252,85,196), thickness, cv2.LINE_AA)                
                 #cv2.rectangle(roi_gray, (sx, sy), (sx+sw, sy+sh), (0, 255, 0), 2)
                 #cv2.rectangle(roi_gray, (x+sx, y+sy), (sx+sw, sy+sh), (0, 255, 0), 2)
 
