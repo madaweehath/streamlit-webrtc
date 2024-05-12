@@ -3,8 +3,8 @@ from streamlit_webrtc import webrtc_streamer , VideoHTMLAttributes
 import av
 import cv2
 
-st.title("معايدة نادي إنجاز")
-st.write("AI team")
+st.title("ورشة عمل: مقدمة في تعلم الالة")
+st.write("ُEnjaz: AI team")
 
 title = st.text_input('(بالانجليزي لوسمحت🙏)وش اسمك🤔؟')
 if len(title) > 0:
@@ -43,7 +43,7 @@ class VideoProcessor:
            
         for (x, y, w, h) in faces:
             #cv2.rectangle(img, (10, 10), (x+w, y+h), (255, 0, 0), 2)
-            cv2.putText(img, 'Hi ' + title + ':) SMILE!' , (20, 40), font,  fontScale, color, thickness, cv2.LINE_AA)
+            cv2.putText(img, 'Hi, :) SMILE!' , (20, 40), font,  fontScale, color, thickness, cv2.LINE_AA)
             
             # Region of interest for smile detection within the face
             roi_gray = img[y:y+h, x:x+w]
@@ -51,7 +51,7 @@ class VideoProcessor:
 
             for (sx, sy, sw, sh) in smiles:
                 #cv2.rectangle(roi_gray, (x+sx, y+sy), (x+sx+sw, y+sy+sh), (0, 255, 0), 2)
-                cv2.putText(img, 'Eid Mubarak ' + title , (x, y), font,  fontScale, (255,5,171), thickness, cv2.LINE_AA)                
+                cv2.putText(img, 'Welcome ' + title , (x, y), font,  fontScale, (255,5,171), thickness, cv2.LINE_AA)                
                 #cv2.rectangle(roi_gray, (sx, sy), (sx+sw, sy+sh), (0, 255, 0), 2)
                 #cv2.rectangle(roi_gray, (x+sx, y+sy), (sx+sw, sy+sh), (0, 255, 0), 2)
 
